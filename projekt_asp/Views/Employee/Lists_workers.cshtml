@@ -1,0 +1,72 @@
+﻿@model IList< projekt_asp.Models.RegisterModel>
+@{
+            ViewData["Title"] = "Workers list";
+            Layout = "_Panel";
+
+ }
+<div class="container-fluid m-3">
+    <h2>
+        Workers list
+    </h2>
+    <table class="table">
+        <tr>
+            <td>
+                <p class="h3 text-center">Number</p>
+            </td>
+            <td>
+                <p class="h3 text-center">Login</p>
+            </td>
+            <td>
+                <p class="h3 text-center">Name</p>
+            </td>
+            <td>
+                <p class="h3 text-center">Surname</p>
+            </td>
+            <td>
+                <p class="h3 text-center">Email</p>
+            </td>
+            <td>
+                <p class="h3 text-center">Position</p>
+            </td>
+        </tr>
+        @{int counter = 1; int ranga = (int)ViewData["rang"];}
+@foreach (var workers in Model)
+{
+            <tr>
+                <td>
+                    <p class="text-center">@counter.</p>
+                </td>
+                <td>
+                    <p class="text-center"> @workers.Login</p>
+                </td>
+                <td>
+                    <p class="text-center"> @workers.Name</p>
+                </td>
+                <td>
+                    <p class="text-center"> @workers.Surname</p>
+                </td>
+                <td>
+                    <p class="text-center"> @workers.Email</p>
+                </td>
+                <td>
+                    <p class="text-center"> @workers.position</p>
+                </td>
+                <td>
+                    @if((ranga > 2 && ranga >= (int)workers.position) || workers.Login==(string)ViewData["login"])
+                    {
+                    <a class="btn btn-primary" asp-controller="Employee" asp-action="EditUser" asp-route-id="@workers.UserId">Edit</a>
+                }
+                    
+                    @if ((ranga> 2&&ranga>=(int)workers.position)&&workers.Login!= (string)ViewData["login"])
+                    {
+                        <a class="btn btn-primary" asp-controller="Employee" asp-action="Delete" asp-route-id="@workers.UserId">Delete</a>
+                    }
+
+
+                </td>
+            </tr>
+            counter++;
+        }
+
+    </table>
+</div>

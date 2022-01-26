@@ -1,0 +1,42 @@
+﻿@model TimeModel;
+@{
+    ViewData["Title"] = "Employee Panel";
+    Layout = "_Panel";
+    DateTime date = new DateTime(2020,01,01);
+}
+<link href="~/css/Msg.css" rel="stylesheet" type="text/css" />
+<form asp-controller="Time" asp-action="Add_time" method="post">
+    <div class="container ml-auto mr-auto mt-5 w-50 bg-light">
+        <div class="row mb-4 justify-content-center">
+            <div class="text-left mr-5 mt-3">
+                <label class="h3">Date</label>
+            </div>
+            <div class="h4 mt-3">
+                <label>@date.ToShortDateString()</label>
+            </div>
+
+
+        </div>
+
+
+        <div class="row justify-content-center">
+
+
+            <div class=" text-left ml-5">
+                <label class="h3">Number of hours</label>
+            </div>
+
+            <div class=" h4 ml-5">
+
+                <input type="number" min="0" max="24" asp-for="Hours_worked" />
+            </div>
+
+        </div>
+        <div class="text-center">
+            <button class=" btn btn-sm btn-dark w-50 mt-3 ml-auto mr-auto mb-3" type="submit">Add</button>
+        </div>
+       
+    </div>
+
+           
+</form>

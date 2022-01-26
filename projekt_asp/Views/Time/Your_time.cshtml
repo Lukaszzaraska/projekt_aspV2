@@ -1,0 +1,80 @@
+﻿@model projekt_asp.Models.RegisterModel
+@{
+
+    Layout = "_Panel";
+   
+}
+@{
+}
+<div class="container-fluid m-3">
+    <h2>
+        Hours worked
+    </h2>
+    <table class="table">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Surname
+            </td>
+            <td>
+                Total Working Hours
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Model.Name
+            </td>
+            <td>
+                @Model.Surname
+            </td>
+            <td>
+                @ViewData["time"] H
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<div class="container-fluid m-3">
+    <h2>
+        Details
+    </h2>
+    <table class="table">
+        <tr>
+            <td>
+                Date
+            </td>
+            <td>
+                Working Hours
+            </td>
+        </tr>
+
+
+
+        @foreach (TimeModel time in Model.TimeModels)
+        {
+            <tr>
+                <td>
+                    @time.Date.ToShortDateString()
+                </td>
+                <td>
+                    @time.Hours_worked H
+                </td>
+            </tr>
+        }
+
+
+
+    </table>
+
+</div>
+
+
+
+
+
+
