@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using projekt_asp.config;
 using projekt_asp.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace projekt_asp.Controllers
 {
+    [DisableBasicAuthentication]
     public class EmployeeController : Controller
     {
         private readonly IRegisterCRUDModel repository;

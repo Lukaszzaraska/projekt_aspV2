@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using projekt_asp.Models;
 using System.Dynamic;
 using Microsoft.AspNetCore.Http;
+using projekt_asp.config;
 
 namespace projekt_asp.Controllers
 {
+    [DisableBasicAuthentication]
     public class MsgController : Controller
     {
         private readonly IMsgCRUDModel repository;

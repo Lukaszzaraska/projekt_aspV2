@@ -1,23 +1,16 @@
-﻿body {
-    background: #ffffff;
-}
-.gradient-custom {
-    padding-top:0.25rem;
+﻿.gradient-custom-3 {
     /* fallback for old browsers */
-    background: #f093fb;
+    background: #9e84fa;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom right, rgb(115 98 143), rgb(21 142 181));
+    background: -webkit-linear-gradient(to right, rgba(222, 132, 250, 0.5), rgba(143, 150, 244, 0.5));
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom right, rgb(115 98 143), rgb(21 142 181))
+    background: linear-gradient(to right, #9e84fa70, #9e84fa87);
 }
-
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-}
-
-.card-registration .select-arrow {
-    top: 13px;
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
 }

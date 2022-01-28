@@ -10,9 +10,11 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using Microsoft.IdentityModel.Protocols;
 using System.Configuration;
+using projekt_asp.config;
 
 namespace projekt_asp.Controllers
 {
+    [DisableBasicAuthentication]
     public class TimeController : Controller
     {
 

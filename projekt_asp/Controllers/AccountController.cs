@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace projekt_asp.Controllers
 {
     
-  
+        [DisableBasicAuthentication]
         [Authorize]
         public class AccountController : Controller
         {
@@ -32,7 +32,7 @@ namespace projekt_asp.Controllers
                 _context = context;
         }
 
-       
+        
         [AllowAnonymous]
             [HttpGet]
             
@@ -56,8 +56,8 @@ namespace projekt_asp.Controllers
                 });
 
             }
-            
-            [AllowAnonymous]
+      
+        [AllowAnonymous]
             [HttpPost]
             [ValidateAntiForgeryToken]
            

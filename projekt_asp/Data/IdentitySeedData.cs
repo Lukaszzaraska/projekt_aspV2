@@ -11,7 +11,7 @@ namespace projekt_asp.Models
     public static class IdentitySeedData
     {
         
-        private const string adminPassword = "zaq1@WSX";
+        private const string Password = "zaq1@WSX";
      
         public static async void EnsurePopulated(IApplicationBuilder app)
         {
@@ -20,8 +20,8 @@ namespace projekt_asp.Models
             {
                 var userManager = (UserManager<IdentityUser>)scope
                .ServiceProvider.GetService(typeof(UserManager<IdentityUser>));
-
-                List<IdentityUser> user = new() 
+                //Tutaj inicjujemy tylko dane do tabeli identity
+                List<IdentityUser> users = new() 
                 {
                     new IdentityUser{ UserName = "Tomek", Email = "testowytomek@gmail.com",EmailConfirmed=false,Id="1" },
                     new IdentityUser { UserName = "Marek", Email = "testowyMarek@gmail.com",EmailConfirmed=false, Id = "2" },
@@ -34,16 +34,18 @@ namespace projekt_asp.Models
                     new IdentityUser { UserName = "Emilia", Email = "testowaEmilia@gmail.com", EmailConfirmed = false, Id = "9" },
                     new IdentityUser { UserName = "Weronika", Email = "testowaWeronika@gmail.com", EmailConfirmed = false, Id = "10" }
                 };
-                if (!user.Any())
+               
+                
+                IdentityUser userTest = await
+           userManager.FindByIdAsync("1");
+                if (userTest == null)
                 {
-
-                   foreach(IdentityUser x in user)
+                    foreach (IdentityUser x in users)
                     {
-                        await userManager.CreateAsync(x, adminPassword);
-                       
+                        await userManager.CreateAsync(x, Password);
                     }
-                    
                 }
+
             }
         }
     }
