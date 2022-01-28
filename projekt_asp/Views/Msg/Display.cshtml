@@ -1,23 +1,20 @@
 ﻿@model projekt_asp.Models.MsgModel
-@{
-    ViewData["Title"] = "Message";
-    Layout = "_Panel";
-
-}
+@{ ViewData["Title"] = "Message";
+                Layout = "_Panel"; }
 <table class="table">
-        <tr>
-            <td>
-                <h4>Date send: @Model.Date_send.ToShortDateString()</h4>
-            </td>
+    <tr>
+        <td>
+            <h4>Date send: @Model.Date_send.ToShortDateString()</h4>
+        </td>
 
-            <td>
-               
-                <h4>From: @Model.Login_from</h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h6>@Model.Msg</h6>
-            </td>
-        </tr>
+        <td>
+
+            <h4>From: @Model.Login_from</h4>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h6>@Model.Msg</h6>
+        </td>
+    </tr>
 </table>

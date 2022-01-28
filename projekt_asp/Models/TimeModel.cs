@@ -16,8 +16,8 @@ namespace projekt_asp.Models
         public DateTime Date { get; set; }
 
         public int Hours_worked { get; set; }
-       
-        public RegisterModel RegisterModel  { get; set; }
+
+        public RegisterModel RegisterModel { get; set; }
     }
 
 }

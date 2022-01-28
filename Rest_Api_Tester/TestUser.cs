@@ -10,10 +10,10 @@ using System.Collections.Generic;
 
 namespace Rest_Api_Tester
 {
-    public class ApiTest 
+    public class ApiTest
     {
-       
-       
+
+
         [Fact]
         public void AddUser()
         {
@@ -28,7 +28,7 @@ namespace Rest_Api_Tester
                 Name = "Marek",
                 Password = "zaq1@WSX",
                 Surname = "Poreba"
-  
+
             });
             repository.AddUser(new RegisterModel()
             {
@@ -39,7 +39,7 @@ namespace Rest_Api_Tester
                 Name = "Tomasz",
                 Password = "zaq1@WSX",
                 Surname = "Rozek"
-    
+
             });
             var repo = repository.FindUser();
             Assert.Equal(2, repo.Count);
@@ -103,7 +103,7 @@ namespace Rest_Api_Tester
             });
             repository.EditUser("0", new RegisterModel { Surname = "Sztachetka", Email = "plot@gmail.com" });
 
-            Assert.Equal("Sztachetka", repository.FindUser("0").Surname); 
+            Assert.Equal("Sztachetka", repository.FindUser("0").Surname);
             Assert.Equal("plot@gmail.com", repository.FindUser("0").Email);
             Assert.Equal("TestowyMarek", repository.FindUser("0").Login);
         }

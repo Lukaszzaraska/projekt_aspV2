@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace projekt_asp.Models
 {
-   public interface IMsgCRUDModel
+    public interface IMsgCRUDModel
     {
-        void SendMsg(MsgModel Msg,RegisterModel login);
+        void SendMsg(MsgModel Msg, RegisterModel login);
         IList<MsgModel> FindAllUser();
         MsgModel FindMsgById(int id);
 

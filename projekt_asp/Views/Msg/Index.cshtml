@@ -1,13 +1,10 @@
 ﻿@model projekt_asp.Models.MsgModel
 
-    @{
-        ViewData["Title"] = "Send Msg";
-         Layout = "_Panel";
-
-    }
+@{ ViewData["Title"] = "Send Msg";
+                Layout = "_Panel"; }
 <link href="~/css/Msg.css" rel="stylesheet" type="text/css" />
 <div class="container-fluid m-3">
-    
+
     <div class="container">
         <div class="row">
             <div class="col-8 col-md-4">
@@ -21,8 +18,7 @@
                         @foreach (var workers in ViewData["Data"] as List<RegisterModel>)
                         {
 
-                            <option value="@workers.Login">@workers.Login</option>
-                        }
+            <option value="@workers.Login">@workers.Login</option>}
                     </select>
 
                     <input asp-for="Login_from" value="@ViewData["login"]" type="hidden">
@@ -31,7 +27,7 @@
                     <textarea asp-for="Msg" class="form-control  mt-2" minlength="10" rows="3" placeholder="Write there ..." required></textarea>
                     <button class="btn btn-lg btn-dark btn-block mt-3" type="submit">Send <i class="bi bi-send"></i></button>
                 </form>
-              
+
             </div>
             <div class="col-8 col-md-4 float-left">
                 <h3>Your messages</h3>
@@ -56,40 +52,42 @@
 
                     @foreach (var msg in ViewData["your_msg"] as List<MsgModel>)
                     {
-                <tr>
-                    <td>
-                        <p class="h5 text-center">@msg.Login_from</p>
-                    </td>
-                    <td>
-                        <p class="h5 text-center">@msg.Msg.Remove(msg.Msg.Length - 5) ...</p>
-                    </td>
-                    <td>
-                        <p class="h5 text-center">@msg.Date_send.ToShortDateString()</p>
-                    </td>
-                    <td>
-                        <p class="h5 text-center">@if (@msg.Msg_readed == true)
-                        {<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
-    <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z" />
-</svg> }
-                        else {<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-</svg> }</p>
-                    </td>
-                    <td>
-                        <a class="btn btn-info" asp-controller="Msg" asp-action="Display" asp-route-id="@msg.MsgId">Read</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" asp-controller="Msg" asp-action="Delete" asp-route-id="@msg.MsgId">Delete</a>
-                    </td>
-                </tr>
-                    }
+        <tr>
+            <td>
+                <p class="h5 text-center">@msg.Login_from</p>
+            </td>
+            <td>
+                <p class="h5 text-center">@msg.Msg.Remove(msg.Msg.Length - 5) ...</p>
+            </td>
+            <td>
+                <p class="h5 text-center">@msg.Date_send.ToShortDateString()</p>
+            </td>
+            <td>
+                <p class="h5 text-center">
+                    @if (@msg.Msg_readed == true)
+                    {<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                            <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z" />
+                        </svg> }
+                    else
+                    {<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                        </svg>          }
+            </p>
+        </td>
+        <td>
+            <a class="btn btn-info" asp-controller="Msg" asp-action="Display" asp-route-id="@msg.MsgId">Read</a>
+        </td>
+        <td>
+            <a class="btn btn-danger" asp-controller="Msg" asp-action="Delete" asp-route-id="@msg.MsgId">Delete</a>
+        </td>
+    </tr>}
 
 
                 </table>
             </div>
         </div>
-        </div>
-               
+    </div>
 
-            </div>
+
+</div>
 

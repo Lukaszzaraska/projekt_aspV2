@@ -1,9 +1,6 @@
-﻿@model IList< projekt_asp.Models.RegisterModel>
-@{
-            ViewData["Title"] = "Workers list";
-            Layout = "_Panel";
-
- }
+﻿@model IList<projekt_asp.Models.RegisterModel>
+@{ ViewData["Title"] = "Workers list";
+                Layout = "_Panel"; }
 <div class="container-fluid m-3">
     <h2>
         Workers list
@@ -30,43 +27,40 @@
             </td>
         </tr>
         @{int counter = 1; int ranga = (int)ViewData["rang"];}
-@foreach (var workers in Model)
-{
-            <tr>
-                <td>
-                    <p class="text-center">@counter.</p>
-                </td>
-                <td>
-                    <p class="text-center"> @workers.Login</p>
-                </td>
-                <td>
-                    <p class="text-center"> @workers.Name</p>
-                </td>
-                <td>
-                    <p class="text-center"> @workers.Surname</p>
-                </td>
-                <td>
-                    <p class="text-center"> @workers.Email</p>
-                </td>
-                <td>
-                    <p class="text-center"> @workers.position</p>
-                </td>
-                <td>
-                    @if((ranga > 2 && ranga >= (int)workers.position) || workers.Login==(string)ViewData["login"])
-                    {
-                    <a class="btn btn-primary" asp-controller="Employee" asp-action="EditUser" asp-route-id="@workers.UserId">Edit</a>
-                }
-                    
-                    @if ((ranga> 2&&ranga>=(int)workers.position)&&workers.Login!= (string)ViewData["login"])
-                    {
-                        <a class="btn btn-primary" asp-controller="Employee" asp-action="Delete" asp-route-id="@workers.UserId">Delete</a>
-                    }
+        @foreach (var workers in Model)
+        {
+<tr>
+    <td>
+        <p class="text-center">@counter.</p>
+    </td>
+    <td>
+        <p class="text-center"> @workers.Login</p>
+    </td>
+    <td>
+        <p class="text-center"> @workers.Name</p>
+    </td>
+    <td>
+        <p class="text-center"> @workers.Surname</p>
+    </td>
+    <td>
+        <p class="text-center"> @workers.Email</p>
+    </td>
+    <td>
+        <p class="text-center"> @workers.position</p>
+    </td>
+    <td>
+        @if ((ranga > 2 && ranga >= (int)workers.position) || workers.Login == (string)ViewData["login"])
+        {
+<a class="btn btn-primary" asp-controller="Employee" asp-action="EditUser" asp-route-id="@workers.UserId">Edit</a>                }
+
+        @if ((ranga > 2 && ranga >= (int)workers.position) && workers.Login != (string)ViewData["login"])
+        {
+<a class="btn btn-primary" asp-controller="Employee" asp-action="Delete" asp-route-id="@workers.UserId">Delete</a>}
 
 
-                </td>
-            </tr>
-            counter++;
-        }
+    </td>
+</tr>counter++;
+            }
 
     </table>
 </div>

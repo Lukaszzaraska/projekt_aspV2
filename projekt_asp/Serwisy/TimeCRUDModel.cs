@@ -34,19 +34,19 @@ namespace projekt_asp.Models
 
             IQueryable<DateTime> userQuery1 =
           from czas in _context.Times
-          where (czas.Date == date_today)&& (czas.RegisterModel.UserId==registerModel.UserId)
+          where (czas.Date == date_today) && (czas.RegisterModel.UserId == registerModel.UserId)
           select czas.Date;
 
             string test = "x";
- 
-            
+
+
             try
             {
                 test = userQuery1.First().ToString();
             }
             catch
             {
-                if(test=="x")
+                if (test == "x")
                 {
                     registerModel.TimeModels.Add(time);
                     time.Date = date_today;
@@ -54,7 +54,7 @@ namespace projekt_asp.Models
                     _context.SaveChanges();
                     return true;
                 }
-              
+
             }
 
 
@@ -72,15 +72,12 @@ namespace projekt_asp.Models
             }
 
 
-
-
         }
         public RegisterModel FindByLogin(string login)
         {
-   
-            return _context.Users.Where(user => user.Login.Equals(login)).Include(tim=>tim.TimeModels).First();
-        }
 
+            return _context.Users.Where(user => user.Login.Equals(login)).Include(tim => tim.TimeModels).First();
+        }
 
     }
 

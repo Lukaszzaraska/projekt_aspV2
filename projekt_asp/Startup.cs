@@ -53,10 +53,10 @@ namespace projekt_asp
                 });
             });
 
-          
+
             //dodanie sesji
             services.AddDistributedMemoryCache();
-          
+
 
             services.AddSingleton<BasicAuthorizationFilter>();
             services.AddMvc().AddMvcOptions(options =>
@@ -78,7 +78,8 @@ namespace projekt_asp
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();
             services.AddMemoryCache();
-            services.AddSession(options => {
+            services.AddSession(options =>
+            {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
             });
         }
@@ -106,29 +107,26 @@ namespace projekt_asp
             {
 
                 app.UseExceptionHandler("/Home/Error");
-              
+
                 app.UseHsts();
             }
-            
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
-           
-            app.UseSession();//wywo³anie sesji
 
-          
+            app.UseSession();//wywo³anie sesji
 
             app.UseEndpoints(endpoints =>
              {
-                   endpoints.MapControllerRoute(
-                       name: "default",
-                       pattern: "{controller=Home}/{action=Index}/{id?}");
+                 endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller=Home}/{action=Index}/{id?}");
              });
-           
-           IdentitySeedData.EnsurePopulated(app);
-           
+
+            IdentitySeedData.EnsurePopulated(app);
+
         }
     }
 }

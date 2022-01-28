@@ -22,49 +22,49 @@ namespace projekt_asp.Models
             _userManager = userManager;
             _signInManager = signInManager;
         }
-       
+
         public RegisterModel Add(RegisterModel user)
         {
             IdentityUser identityUser = new IdentityUser { UserName = user.Login, Email = user.Email };
-            Task<IdentityResult> result =  _userManager.CreateAsync(identityUser, user.Password);
-            
+            Task<IdentityResult> result = _userManager.CreateAsync(identityUser, user.Password);
 
-                RegisterModel registerModel = new()
-                {
-                    UserId = identityUser.Id,
-                    Login = user.Login,
-                    Email = user.Email,
-                    Password = user.Password,
-                    Name = user.Name,
-                    position = user.position,
-                    Surname = user.Surname
 
-                };
-                RegisterModel entity = _context.Users.Add(registerModel).Entity;
-                _context.SaveChanges();
-            
+            RegisterModel registerModel = new()
+            {
+                UserId = identityUser.Id,
+                Login = user.Login,
+                Email = user.Email,
+                Password = user.Password,
+                Name = user.Name,
+                position = user.position,
+                Surname = user.Surname
+
+            };
+            RegisterModel entity = _context.Users.Add(registerModel).Entity;
+            _context.SaveChanges();
+
 
             return entity;
         }
-       
-        public bool Find_userL(string login,string haslo)
+
+        public bool Find_userL(string login, string haslo)
         {
 
             IQueryable<string> userQuery =
             from user in _context.Users
-            where user.Login == login && user.Password==haslo
+            where user.Login == login && user.Password == haslo
             select user.Login;
 
             if (string.IsNullOrEmpty(userQuery.FirstOrDefault()))
             {
-             
+
                 return false;
             }
             else
             {
                 return true;
             }
-           
+
         }
         public bool Find_userR(string login, string email)
         {
@@ -91,10 +91,10 @@ namespace projekt_asp.Models
 
         public void Delete(string id)
         {
-      
-             _context.Users.Remove(FindById(id));
+
+            _context.Users.Remove(FindById(id));
             _context.SaveChanges();
-        
+
         }
         public int Find_pozycja(string login)
         {
@@ -104,8 +104,8 @@ namespace projekt_asp.Models
             orderby user.position
             select user.position;
 
-            return (int)Enum.Parse(typeof(RegisterModel.Position),userQuery.First().ToString());
-            
+            return (int)Enum.Parse(typeof(RegisterModel.Position), userQuery.First().ToString());
+
         }
         public string Find_Id(string login, RegisterModel dane)
         {

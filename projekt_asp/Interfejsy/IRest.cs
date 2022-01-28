@@ -19,7 +19,7 @@ namespace projekt_asp.Models
 
 
         public void EditUser(string id, [FromBody] RegisterModel user);
-       
-        
+
+
     }
 }

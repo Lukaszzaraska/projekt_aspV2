@@ -14,7 +14,7 @@ namespace projekt_asp.config
 {
     public class BasicAuthorizationFilter : IAuthorizationFilter
     {
-        
+
         private const string USERNAME = "admin";
         private const string PASSWORD = "1234";
         private const string Realm = "App Realm";

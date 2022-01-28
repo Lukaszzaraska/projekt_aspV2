@@ -29,16 +29,16 @@ namespace projekt_asp.Controllers
         }
         public IActionResult Send(MsgModel data)
         {
-            ViewData["login"] = HttpContext.Session.GetString("login"); 
-            
+            ViewData["login"] = HttpContext.Session.GetString("login");
+
             RegisterModel login = bases.FindAll().Where(x => x.Login.Equals(ViewData["login"])).First();
-            repository.SendMsg(data,login);
+            repository.SendMsg(data, login);
             ViewData["Data"] = bases.FindAll();
             return View("Confirm");
         }
         public IActionResult Display(int id)
         {
-            
+
             repository.Readed(id);
             ViewData["login"] = HttpContext.Session.GetString("login");
             return View(repository.FindMsgById(id));
@@ -51,7 +51,7 @@ namespace projekt_asp.Controllers
             ViewData["Data"] = bases.FindAll();
             ViewData["your_msg"] = repository.FindMsg(HttpContext.Session.GetString("login"));
             return View("Index");
-;
+
         }
     }
 }

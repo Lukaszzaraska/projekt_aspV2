@@ -1,11 +1,6 @@
 ﻿@model projekt_asp.Models.RegisterModel
-@{
-
-    Layout = "_Panel";
-   
-}
-@{
-}
+@{ Layout = "_Panel"; }
+@{ }
 <div class="container-fluid m-3">
     <h2>
         Hours worked
@@ -57,15 +52,14 @@
 
         @foreach (TimeModel time in Model.TimeModels)
         {
-            <tr>
-                <td>
-                    @time.Date.ToShortDateString()
-                </td>
-                <td>
-                    @time.Hours_worked H
-                </td>
-            </tr>
-        }
+<tr>
+    <td>
+        @time.Date.ToShortDateString()
+    </td>
+    <td>
+        @time.Hours_worked H
+    </td>
+</tr>}
 
 
 

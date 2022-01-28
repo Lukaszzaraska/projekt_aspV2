@@ -9,10 +9,10 @@ namespace projekt_asp.Models
 {
     public interface ITimeCRUDModel
     {
-   
-        bool AddTime(TimeModel time,string login);
+
+        bool AddTime(TimeModel time, string login);
         RegisterModel FindByLogin(string login);
 
-        
+
     }
 }

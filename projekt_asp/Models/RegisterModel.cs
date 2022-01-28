@@ -45,7 +45,7 @@ namespace projekt_asp.Models
             [Display(Name = "Boss")] God = 4
 
         }
-      
+
         public ICollection<TimeModel> TimeModels { get; set; }
         public ICollection<MsgModel> MsgModels { get; set; }
 

@@ -15,6 +15,6 @@ namespace projekt_asp.Models
         public string Password { get; set; }
         public string ReturnUrl { get; set; } = "/";
 
-        
+
     }
 }
