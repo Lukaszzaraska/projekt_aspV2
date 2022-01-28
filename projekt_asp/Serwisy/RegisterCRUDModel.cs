@@ -93,7 +93,6 @@ namespace projekt_asp.Models
         {
       
              _context.Users.Remove(FindById(id));
-     
             _context.SaveChanges();
         
         }
@@ -127,13 +126,17 @@ namespace projekt_asp.Models
         }
         public RegisterModel FindById(string id)
         {
-            return _context.Users.Where(x => x.UserId.Equals(id)).Include(e => e.TimeModels).FirstOrDefault();
+            return _context.Users.Where(x => x.UserId.Equals(id)).Include(e => e.TimeModels).Include(m => m.MsgModels).First();
         }
-
+        public RegisterModel FindByIdApi(string id)
+        {
+            return _context.Users.Where(x => x.UserId.Equals(id)).First();
+        }
         public IList<RegisterModel> FindAll()
         {
             return _context.Users.ToList();
         }
-        
+
+
     }
 }

@@ -31,8 +31,6 @@ namespace projekt_asp.Controllers
             public IList<RegisterModel> FindUser()
             {
             return _context.FindAll();
-         
-
             }
 
             
@@ -40,8 +38,9 @@ namespace projekt_asp.Controllers
             [Route("{id}")]
             public RegisterModel DeleteUser(string id)
             {
+                RegisterModel DeleteUser = _context.FindByIdApi(id);
                _context.Delete(id);
-               return _context.FindById(id);
+               return DeleteUser;
             }
 
 
@@ -50,8 +49,7 @@ namespace projekt_asp.Controllers
             [Route("{id}")]
             public RegisterModel FindUser(string id)
             {
-            return _context.FindById(id);
-         
+            return _context.FindByIdApi(id);
             }
 
         [DisableBasicAuthentication]

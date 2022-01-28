@@ -15,6 +15,7 @@ namespace projekt_asp.Models
         RegisterModel Update(RegisterModel dane);
         void Delete(string id);
         RegisterModel FindById(string id);
+        RegisterModel FindByIdApi(string id);
         IList<RegisterModel> FindAll();
     }
 }
